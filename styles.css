@@ -15,7 +15,9 @@
   --radius-xl: 28px;
   --radius-lg: 22px;
   --radius-md: 16px;
+  --radius-control: var(--radius-md);
   --radius-sm: 999px;
+  --surface-padding: 1rem;
 }
 
 *,
@@ -72,6 +74,9 @@ body::before {
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.95fr);
   gap: 1rem;
   margin-top: 0.4rem;
+  padding: var(--surface-padding);
+  border-radius: calc(var(--radius-xl) + 4px);
+  overflow: hidden;
 }
 
 .hero__copy,
@@ -198,10 +203,14 @@ code {
 
 .controls {
   margin-top: 1rem;
-  padding: 1rem;
+  padding: var(--surface-padding);
   border-radius: var(--radius-xl);
   display: grid;
-  grid-template-columns: minmax(260px, 2.2fr) repeat(6, minmax(120px, 1fr)) minmax(140px, 0.9fr);
+  grid-template-columns:
+    minmax(0, 1.75fr)
+    minmax(0, 1.75fr)
+    repeat(6, minmax(110px, 1fr))
+    minmax(140px, 1fr);
   gap: 0.85rem;
   align-items: end;
 }
@@ -209,6 +218,7 @@ code {
 .field {
   display: grid;
   gap: 0.45rem;
+  min-width: 0;
 }
 
 .field span {
@@ -221,7 +231,7 @@ code {
 .ghost-button,
 .button {
   min-height: 48px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   border: 1px solid rgba(24, 21, 16, 0.12);
   font: inherit;
 }
@@ -483,7 +493,7 @@ code {
 
 @media (max-width: 900px) {
   .site-shell {
-    width: min(100% - 1rem, 1380px);
+    width: min(calc(100% - 1rem), 1380px);
   }
 
   .hero {
@@ -506,7 +516,7 @@ code {
 
 @media (max-width: 640px) {
   .site-shell {
-    width: min(100% - 0.75rem, 1380px);
+    width: min(calc(100% - 0.75rem), 1380px);
     padding-bottom: 2.5rem;
   }
 
