@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HEX Lab Logo Library</title>
+    <meta
+      name="description"
+      content="Browse, filter, sort, preview, and download every HEX Lab logo file in this folder."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="hero">
+        <section class="hero__copy">
+          <p class="eyebrow">Asset Browser</p>
+          <h1>HEX Lab Logo Library</h1>
+          <p class="hero__text">
+            Browse every PNG and SVG logo in this folder, filter by layout and colorway,
+            and download the exact file you need in one click.
+          </p>
+          <div class="hero__stats" aria-label="Asset summary">
+            <article class="stat-card">
+              <strong id="fileCount">0</strong>
+              <span>Files</span>
+            </article>
+            <article class="stat-card">
+              <strong id="variantCount">0</strong>
+              <span>Variants</span>
+            </article>
+            <article class="stat-card">
+              <strong id="folderCount">0</strong>
+              <span>Folders</span>
+            </article>
+          </div>
+        </section>
+
+        <aside class="hero__panel" aria-label="Download tips">
+          <p class="panel__eyebrow">Quick Tips</p>
+          <h2>Pick the right file fast</h2>
+          <ul class="tip-list">
+            <li>Use <code>SVG</code> for websites, print, and scalable design work.</li>
+            <li>Use <code>PNG 2x</code> or <code>PNG 4x</code> for crisp raster exports.</li>
+            <li>White variants are shown on dark preview panels so they stay visible.</li>
+          </ul>
+        </aside>
+      </header>
+
+      <section class="controls" aria-label="Logo filters">
+        <label class="field field--search">
+          <span>Search</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search by filename, folder, format, layout, or colorway"
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="field">
+          <span>Format</span>
+          <select id="formatFilter">
+            <option value="all">All formats</option>
+            <option value="PNG">PNG</option>
+            <option value="SVG">SVG</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Colorway</span>
+          <select id="collectionFilter"></select>
+        </label>
+
+        <label class="field">
+          <span>Layout</span>
+          <select id="layoutFilter"></select>
+        </label>
+
+        <label class="field">
+          <span>Scale</span>
+          <select id="scaleFilter"></select>
+        </label>
+
+        <label class="field">
+          <span>Folder</span>
+          <select id="locationFilter"></select>
+        </label>
+
+        <label class="field">
+          <span>Sort</span>
+          <select id="sortSelect">
+            <option value="recommended">Recommended</option>
+            <option value="name-asc">Name A-Z</option>
+            <option value="name-desc">Name Z-A</option>
+            <option value="format">Format</option>
+            <option value="scale">Scale</option>
+            <option value="location">Folder</option>
+          </select>
+        </label>
+
+        <div class="field field--button">
+          <span>Reset</span>
+          <button id="clearFilters" class="ghost-button" type="button">Clear filters</button>
+        </div>
+      </section>
+
+      <section class="results-bar" aria-live="polite">
+        <p id="resultsSummary">Showing 0 assets.</p>
+      </section>
+
+      <section id="gallery" class="gallery" aria-live="polite"></section>
+
+      <section id="emptyState" class="empty-state" hidden>
+        <p class="empty-state__eyebrow">No matches</p>
+        <h2>No logos match these filters.</h2>
+        <p>Try removing a filter or clear the search to see the full library again.</p>
+      </section>
+
+      <footer class="site-footer">
+        Built from the local HEX Lab logo files in this workspace.
+      </footer>
+    </div>
+
+    <template id="cardTemplate">
+      <article class="logo-card">
+        <div class="preview-frame">
+          <a class="preview-link" target="_blank" rel="noopener">
+            <img class="preview-image" loading="lazy" alt="">
+          </a>
+        </div>
+
+        <div class="card-content">
+          <div class="card-head">
+            <p class="card-kicker"></p>
+            <span class="format-badge"></span>
+          </div>
+
+          <h2 class="card-title"></h2>
+          <p class="card-meta"></p>
+          <div class="tag-row"></div>
+          <p class="card-path"></p>
+
+          <div class="card-actions">
+            <a class="button button--muted preview-button" target="_blank" rel="noopener">Open</a>
+            <a class="button button--primary download-button">Download</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="logo-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
